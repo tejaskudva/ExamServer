@@ -71,7 +71,8 @@ public class QuestionServiceImpl implements QuestionService {
 		}
 		
 	}
-
+	
+	//ADD LIST OF QUESTIONS FOR INITIAL POSTING
 	@Override
 	public List<Question> addQuestions(List<Question> questions) {
 		
