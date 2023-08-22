@@ -25,14 +25,14 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public Question addQuestion(Question question) {
-
+		
 		return questionRepository.save(question);
 	}
 
 	@Override
-	public Question updateQuestion(Question question) {
-
-		return questionRepository.save(question);
+	public Integer updateQuestion(Question question) {
+		
+		return questionRepository.updateQuestion(question.getContent(), question.getOption1(), question.getOption2(), question.getOption3(), question.getOption4(), question.getAnswer(), question.getQuestionId());
 	}
 
 	@Override

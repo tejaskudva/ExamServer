@@ -9,7 +9,7 @@ public interface QuestionService {
 	
 	public Question addQuestion(Question question);
 	
-	public Question updateQuestion(Question question);
+	public Integer updateQuestion(Question question);
 	
 	public List<Question> getQuestion();
 	
