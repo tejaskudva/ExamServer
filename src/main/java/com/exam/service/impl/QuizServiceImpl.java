@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exam.model.exam.Category;
 import com.exam.model.exam.Quiz;
 import com.exam.repo.QuizRepository;
 import com.exam.service.QuizService;
@@ -43,6 +44,14 @@ public class QuizServiceImpl implements QuizService {
 	public void deleteQuiz(Long qId) {
 
 		quizRepository.deleteById(qId);
+	}
+
+	@Override
+	public List<Quiz> getQuizByCategory(Long cid) {
+		
+		Category category = new Category();
+		category.setCId(cid);
+		return quizRepository.findQuizByCategory(category);
 	}
 
 }

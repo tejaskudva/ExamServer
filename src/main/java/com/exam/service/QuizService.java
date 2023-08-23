@@ -16,4 +16,6 @@ public interface QuizService {
 	
 	public void deleteQuiz(Long qId);
 
+	public List<Quiz> getQuizByCategory(Long cid);
+
 }
