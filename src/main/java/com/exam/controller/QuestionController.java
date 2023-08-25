@@ -69,5 +69,12 @@ public class QuestionController {
 		
 		questionService.deleteQuestion(questionId);
 	}
+	
+	@PostMapping("/submitQuestions")
+	public Integer calcScore(@RequestBody List<Question> questions) {
+		
+		return questionService.calculateScore(questions);
+		
+	}
 
 }

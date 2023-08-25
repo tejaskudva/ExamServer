@@ -90,4 +90,22 @@ public class QuestionServiceImpl implements QuestionService {
 		return check;
 	}
 
+	@Override
+	public Integer calculateScore(List<Question> questions) {
+		try {
+			int score = 0;
+			
+			for(Question question: questions) {
+				if(question.getChoice() != null && question.getChoice().equals(question.getAnswer())) {
+					score++;
+				}
+			}
+			return score;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
 }

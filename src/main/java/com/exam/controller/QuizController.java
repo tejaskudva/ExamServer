@@ -31,7 +31,7 @@ public class QuizController {
 	}
 	
 	@GetMapping("/getQuiz")
-	public List<Quiz> addQuiz() {
+	public List<Quiz> getQuiz() {
 		
 		return quizService.getQuiz();
 	}

@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,6 +29,9 @@ public class Question {
 	private String option3;
 	private String option4;
 	private String answer;
+	
+	@Transient
+	private String choice;
 	
 	@ManyToOne
 	private Quiz quiz;
