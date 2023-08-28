@@ -58,6 +58,21 @@ public class QuestionController {
 		return questionService.getQuestionsByQuiz(quiz);
 	}
 	
+	@GetMapping("/quiz-user/{qId}")
+	public List<Question> getQuestionsyQuizUser(@PathVariable Long qId) {
+		
+		Quiz quiz = new Quiz();
+		quiz.setQId(qId);
+		
+		List<Question> questions = questionService.getQuestionsByQuiz(quiz);
+		
+		for(Question question : questions) {
+			question.setAnswer(null);
+		}
+		
+		return questions;
+	}
+	
 	@PutMapping("/updateQuestion")
 	public Integer updateQuestion(@RequestBody Question question) {
 		
