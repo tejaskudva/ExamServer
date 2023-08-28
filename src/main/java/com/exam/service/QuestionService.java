@@ -22,5 +22,7 @@ public interface QuestionService {
 	public List<Question> addQuestions(List<Question> questions);
 
 	public Integer calculateScore(List<Question> questions);
+	
+	public List<Question> encryptAnswers(List<Question> questions);
 
 }

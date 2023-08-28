@@ -1,13 +1,13 @@
 package com.exam.service.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exam.miscellaneous.AESEncryptionDecryption;
 import com.exam.model.exam.Question;
 import com.exam.model.exam.Quiz;
 import com.exam.repo.QuestionRepository;
@@ -16,6 +16,8 @@ import com.exam.service.QuestionService;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
+	
+	private final String encryptionKey = "ThisIsTheBestPossibleKeyForThisProject";
 	
 	@Autowired
 	QuestionRepository questionRepository;
@@ -96,6 +98,10 @@ public class QuestionServiceImpl implements QuestionService {
 			int score = 0;
 			
 			for(Question question: questions) {
+				
+				AESEncryptionDecryption aes = new AESEncryptionDecryption();
+				question.setAnswer(aes.decrypt(question.getAnswer(), encryptionKey));
+				
 				if(question.getChoice() != null && question.getChoice().equals(question.getAnswer())) {
 					score++;
 				}
@@ -106,6 +112,17 @@ public class QuestionServiceImpl implements QuestionService {
 			e.printStackTrace();
 			return -1;
 		}
+	}
+
+	@Override
+	public List<Question> encryptAnswers(List<Question> questions) {
+		
+		for(Question question : questions) {
+			AESEncryptionDecryption aes = new AESEncryptionDecryption();
+			question.setAnswer(aes.encrypt(question.getAnswer(), encryptionKey));
+		}
+		
+		return questions;
 	}
 
 }

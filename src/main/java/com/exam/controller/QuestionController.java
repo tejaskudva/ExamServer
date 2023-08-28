@@ -66,11 +66,7 @@ public class QuestionController {
 		
 		List<Question> questions = questionService.getQuestionsByQuiz(quiz);
 		
-		for(Question question : questions) {
-			question.setAnswer(null);
-		}
-		
-		return questions;
+		return questionService.encryptAnswers(questions);
 	}
 	
 	@PutMapping("/updateQuestion")

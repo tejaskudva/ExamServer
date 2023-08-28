@@ -2,6 +2,7 @@ package com.exam.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
+@SuppressWarnings("serial")
 public class Authority implements GrantedAuthority {
 	
 	private String authority;
